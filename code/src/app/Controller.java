@@ -16,15 +16,15 @@ import javafx.scene.web.WebView;
 public class Controller implements Initializable {
 
     @FXML
-	private WebView webView;
-	
+    private WebView webView;
+
     @FXML
-	TextField textField;
+    TextField textField;
 
     @FXML
     Button loadButton;
-	
-	private WebEngine engine;
+
+    private WebEngine engine;
 
     private WebHistory history;
 
@@ -35,70 +35,72 @@ public class Controller implements Initializable {
     private URL url;
     private URLConnection urlConnection;
     private InputStream inputStream;
-	
-	@Override
-	public void initialize (URL arg0, ResourceBundle arg1) {
-		
-		engine = webView.getEngine();
+
+    @Override
+    public void initialize(URL arg0, ResourceBundle arg1) {
+
+        engine = webView.getEngine();
         homePage = "www.google.com";
         webZoom = 1;
 
         textField.setText(homePage);
-		try {
+        try {
             loadPage();
         } catch (IOException e) {
             e.printStackTrace();
         }
-	}
-	
-	public void loadPage() throws IOException{
-        url = new URL("http://"+textField.getText());
-		engine.load("http://"+textField.getText());
+    }
+
+    public void loadPage() throws IOException {
+        url = new URL("http://" + textField.getText());
+        engine.load("http://" + textField.getText());
 
         urlConnection = url.openConnection();
-	}
+    }
 
-	public void refreshPage(){
+    public void refreshPage() {
         engine.reload();
     }
 
-    public void zoomIn(){
+    public void zoomIn() {
         webZoom += 0.25;
         webView.setZoom(webZoom);
     }
 
-    public void zoomOut(){
+    public void zoomOut() {
         webZoom -= 0.25;
         webView.setZoom(webZoom);
     }
 
-    public void displayHostory(){
+    public void displayHostory() {
         history = engine.getHistory();
         ObservableList<WebHistory.Entry> entries = history.getEntries();
 
-        for(WebHistory.Entry entry: entries){
-            //System.out.println(entry);
-            System.out.println(entry.getUrl()+" "+entry.getLastVisitedDate());
+        for (WebHistory.Entry entry : entries) {
+            // System.out.println(entry);
+            System.out.println(entry.getUrl() + " " + entry.getLastVisitedDate());
         }
     }
 
-    public void back(){
+    public void back() {
         history = engine.getHistory();
         ObservableList<WebHistory.Entry> entries = history.getEntries();
-        if(history.getCurrentIndex()==0) return ;
+        if (history.getCurrentIndex() == 0)
+            return;
         history.go(-1);
         textField.setText(entries.get(history.getCurrentIndex()).getUrl());
     }
 
-    public void forward(){
+    public void forward() {
         history = engine.getHistory();
         ObservableList<WebHistory.Entry> entries = history.getEntries();
-        if(entries.size()-1 == history.getCurrentIndex()) return;
+        if (entries.size() - 1 == history.getCurrentIndex())
+            return;
         history.go(1);
         textField.setText(entries.get(history.getCurrentIndex()).getUrl());
     }
 
-    public void getSourceCode() throws IOException{
+    public void getSourceCode() throws IOException {
 
         System.out.println("Source Code : " + textField.getText());
 
@@ -108,16 +110,13 @@ public class Controller implements Initializable {
 
         do {
             input = inputStream.read();
-
-            if(input!=-1) {
-                System.out.print((char)input);
+            if (input != -1) {
+                System.out.print((char) input);
             }
-
-            if((char)input == '>') {
+            if ((char) input == '>') {
                 System.out.println();
             }
-            
-        } while (input!=-1);
+        } while (input != -1);
     }
 
 }
