@@ -7,3 +7,5 @@ code/lib/javafx.graphics.jar
 code/lib/javafx.media.jar
 code/lib/javafx.swing.jar
 code/lib/javafx.web.jar
+*.class
+*.class
