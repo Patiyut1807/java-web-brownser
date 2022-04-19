@@ -1,4 +1,4 @@
-package brownser;
+package browser;
 import java.io.IOException;
 
 import javafx.application.Application;
