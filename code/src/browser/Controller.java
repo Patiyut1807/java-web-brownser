@@ -90,4 +90,26 @@ public class Controller implements Initializable{
 		
 		engine.executeScript("window.location = \"https://www.youtube.com\";");
 	}
+
+	public void getSourceCode() throws IOException{
+
+        System.out.println("Source Code : " + textField.getText());
+
+        inputStream = urlConnection.getInputStream();
+
+        int input;
+
+        do {
+            input = inputStream.read();
+
+            if(input!=-1) {
+                System.out.print((char)input);
+            }
+
+            if((char)input == '>') {
+                System.out.println();
+            }
+            
+        } while (input!=-1);
+    }
 }
