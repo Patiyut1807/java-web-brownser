@@ -22,6 +22,10 @@ public class Controller implements Initializable{
 	private WebHistory history;
 	private String homePage;
 	private double webZoom;
+
+	private URL url;
+    private URLConnection urlConnection;
+    private InputStream inputStream;
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
