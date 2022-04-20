@@ -1,5 +1,4 @@
 
-
 import java.io.IOException;
 
 import javafx.application.Application;
@@ -13,7 +12,6 @@ public class Main extends Application {
 	@Override
 	public void start(Stage stage) throws IOException {
 		try {
-<<<<<<< Updated upstream
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("Scene.fxml"));
 			Parent root = loader.load();
 			Controller controller = loader.getController();
@@ -27,22 +25,6 @@ public class Main extends Application {
 		}
 
 	}
-=======
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/Scene.fxml"));
-			System.out.println("hh");
-		    Parent root = loader.load();	
-		    Controller controller = loader.getController();
-		    Scene scene = new Scene(root);		
-            
-            stage.setTitle("Test");
-		    stage.setScene(scene);
-		    stage.show();
-        } catch (Exception e) {
-            e.getStackTrace();
-        }
-		
-	}	
->>>>>>> Stashed changes
 
 	public static void main(String[] args) {
 
