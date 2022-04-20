@@ -1,4 +1,4 @@
-
+package app;
 
 import java.io.*;
 import java.net.*;
@@ -23,6 +23,12 @@ public class Controller implements Initializable {
 
     @FXML
     Button loadButton;
+
+    @FXML
+    Button backButton;
+
+    @FXML 
+    Button forwardButton;
 
     private WebEngine engine;
 
@@ -117,6 +123,21 @@ public class Controller implements Initializable {
                 System.out.println();
             }
         } while (input != -1);
+    }
+
+    private void checkBackForward(){
+        history = engine.getHistory();
+        ObservableList<WebHistory.Entry> entries = history.getEntries();
+        
+        if (history.getCurrentIndex() == 0){
+            backButton.setOpacity(0.5);
+        }
+        else backButton.setOpacity(1);
+
+        if (history.getCurrentIndex() == entries.size() - 1){
+            forwardButton.setOpacity(0.5);
+        }
+        else forwardButton.setOpacity(1); 
     }
 
 }

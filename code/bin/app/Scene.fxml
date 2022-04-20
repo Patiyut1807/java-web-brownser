@@ -13,9 +13,9 @@
       <Button fx:id="refreshButton" layoutX="66.0" layoutY="48.0" mnemonicParsing="false" onAction="#refreshPage" text="Refresh" />
       <Button layoutX="135.0" layoutY="48.0" mnemonicParsing="false" onAction="#zoomIn" text="+" />
       <Button layoutX="167.0" layoutY="48.0" mnemonicParsing="false" onAction="#zoomOut" text="-" />
+      <Button fx:id="backButton" layoutX="266.0" layoutY="48.0" mnemonicParsing="false" onAction="#back" text="Back" />
       <Button layoutX="203.0" layoutY="48.0" mnemonicParsing="false" onAction="#displayHostory" text="History" />
-      <Button layoutX="266.0" layoutY="48.0" mnemonicParsing="false" onAction="#back" text="Back" />
-      <Button layoutX="315.0" layoutY="48.0" mnemonicParsing="false" onAction="#forward" text="Forward" />
+      <Button fx:id="forwardButton" layoutX="315.0" layoutY="48.0" mnemonicParsing="false" onAction="#forward" text="Forward" />
       <Button layoutX="384.0" layoutY="48.0" mnemonicParsing="false" onAction="#getSourceCode" text="Source Code" />
    </children>
 </AnchorPane>
