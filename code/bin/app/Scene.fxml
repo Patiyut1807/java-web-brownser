@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.web.WebView?>
 
+<<<<<<< Updated upstream
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.Controller">
    <children>
       <WebView id="webView" fx:id="webView" layoutX="12.0" layoutY="81.0" prefHeight="305.0" prefWidth="577.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="85.0" />
@@ -19,3 +25,42 @@
       <Button layoutX="384.0" layoutY="48.0" mnemonicParsing="false" onAction="#getSourceCode" text="Source Code" />
    </children>
 </AnchorPane>
+=======
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.Controller">
+  <tabs>
+    <Tab text="Untitled Tab 1">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <ToolBar prefHeight="40.0" prefWidth="600.0">
+                    <items>
+                      <Button fx:id="loadButton" mnemonicParsing="false" onAction="#refreshPage">
+                           <graphic>
+                              <ImageView fitHeight="16.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@asset/img/left-arrow.png" />
+                                 </image></ImageView>
+                           </graphic></Button>
+                        <Button mnemonicParsing="false">
+                           <graphic>
+                              <ImageView fitHeight="16.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@asset/img/right-arrow.png" />
+                                 </image></ImageView>
+                           </graphic></Button>
+                        <Button fx:id="loadButton1" mnemonicParsing="false" onAction="#refreshPage">
+                           <graphic>
+                              <ImageView fitHeight="16.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
+                           </graphic>
+                        </Button>
+                        <TextField fx:id="textField" onAction="#loadPage" prefHeight="25.0" prefWidth="368.0" />
+                    </items>
+                  </ToolBar>
+                  <WebView fx:id="webView" layoutX="-19.0" layoutY="33.0" prefHeight="683.0" prefWidth="1020.0" AnchorPane.bottomAnchor="-22.0" AnchorPane.leftAnchor="-19.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0" />
+               </children></AnchorPane>
+      </content>
+    </Tab>
+    <Tab text="Untitled Tab 2" />
+  </tabs>
+</TabPane>
+>>>>>>> Stashed changes

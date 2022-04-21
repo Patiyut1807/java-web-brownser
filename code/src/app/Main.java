@@ -17,6 +17,7 @@ public class Main extends Application {
 			Controller controller = loader.getController();
 			Scene scene = new Scene(root);
 
+			stage.setMaximized(true);
 			stage.setTitle("Test");
 			stage.setScene(scene);
 			stage.show();
