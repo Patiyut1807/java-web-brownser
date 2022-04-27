@@ -10,9 +10,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.web.WebView?>
 
+
 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="720.0" prefWidth="1941.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.TabController">
+demo-code
    <children>
-      <ToolBar prefHeight="34.0" prefWidth="1280.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <ToolBar onKeyPressed="#handle" prefHeight="34.0" prefWidth="1280.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <items>
             <Button fx:id="backButton" mnemonicParsing="false" onAction="#back" prefHeight="30.0" style="-fx-background-radius: 15;">
                <graphic>
@@ -60,6 +62,8 @@
             </TextField>
          </items>
       </ToolBar>
-      <WebView fx:id="webView" layoutX="-2.0" layoutY="40.0" minHeight="-1.0" minWidth="-1.0" prefHeight="677.0" prefWidth="1942.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="-2.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="40.0" />
+Tap-demo
+      <WebView fx:id="webView" layoutX="-19.0" layoutY="40.0" minHeight="-1.0" minWidth="-1.0" onKeyPressed="#handle" onMouseClicked="#onMouseClicked" onMouseMoved="#handle" prefHeight="-1.0" prefWidth="-1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0" />
+
    </children>
 </AnchorPane>
