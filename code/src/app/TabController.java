@@ -40,6 +40,9 @@ public class TabController implements Initializable {
     @FXML
     Tab tabWebview;
 
+    @FXML
+    Button homeButton;
+
     private WebEngine engine;
 
     private WebHistory history;

@@ -61,11 +61,11 @@
             </TextField>
             <HBox alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="1255.0">
                <children>
-                  <Button mnemonicParsing="false">
+                  <Button fx:id="homeButton" mnemonicParsing="false" onAction="#homePage" prefHeight="84.0" prefWidth="21.0">
                      <graphic>
-                        <ImageView fitHeight="16.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="36.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@asset/icons/plus.png" />
+                              <Image url="@asset/icons/home.png" />
                            </image>
                         </ImageView>
                      </graphic>
