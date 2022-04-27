@@ -38,7 +38,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="loadButton1" mnemonicParsing="false" onAction="#refreshPage" prefHeight="30.0" style="-fx-background-radius: 50;">
+            <Button fx:id="loadButton" mnemonicParsing="false" onAction="#refreshPage" prefHeight="30.0" style="-fx-background-radius: 50;">
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
