@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.gluonhq.charm.glisten.control.DropdownButton?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.image.Image?>
@@ -10,7 +12,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.web.WebView?>
 
+<<<<<<< HEAD
 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="1941.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.TabController">
+=======
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="720.0" prefWidth="1941.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.TabController">
+>>>>>>> f893ab4ce87d6a4781ef32639b63190ef475c9b4
    <children>
       <ToolBar prefHeight="34.0" prefWidth="1280.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <items>
@@ -58,6 +64,13 @@
                   <Cursor fx:constant="TEXT" />
                </cursor>
             </TextField>
+            <DropdownButton>
+                <items>
+                    <MenuItem text="Choice 1" />
+                    <MenuItem text="Choice 2" />
+                    <MenuItem text="Choice 3" />
+                </items>
+            </DropdownButton>
          </items>
       </ToolBar>
       <WebView fx:id="webView" layoutX="-19.0" layoutY="40.0" minHeight="-1.0" minWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0" />
