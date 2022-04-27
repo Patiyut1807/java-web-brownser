@@ -31,7 +31,7 @@ public class Controller implements Initializable {
     @FXML
     Button backButton;
 
-    @FXML 
+    @FXML
     Button forwardButton;
 
     @FXML
@@ -68,8 +68,13 @@ public class Controller implements Initializable {
     }
 
     public void loadPage() throws IOException {
-        url = new URL("http://" + textField.getText());
-        engine.load("http://" + textField.getText());
+        String textFieldURL = "http://" + textField.getText();
+        if (isValidURL(textFieldURL)) {
+            url = new URL(textFieldURL);
+        } else {
+            System.err.println("url_error");
+        }
+        engine.load(textFieldURL);
 
         urlConnection = url.openConnection();
     }
@@ -135,35 +140,43 @@ public class Controller implements Initializable {
         } while (input != -1);
     }
 
-    private void checkBackForward(){
+    private void checkBackForward() {
         history = engine.getHistory();
         ObservableList<WebHistory.Entry> entries = history.getEntries();
-        
-        if (history.getCurrentIndex() == 0){
-            backButton.setOpacity(0.5);
-        }
-        else backButton.setOpacity(1);
 
-        if (history.getCurrentIndex() == entries.size() - 1){
+        if (history.getCurrentIndex() == 0) {
+            backButton.setOpacity(0.5);
+        } else
+            backButton.setOpacity(1);
+
+        if (history.getCurrentIndex() == entries.size() - 1) {
             forwardButton.setOpacity(0.5);
-        }
-        else forwardButton.setOpacity(1); 
+        } else
+            forwardButton.setOpacity(1);
     }
 
-    public void newTabEvent(){
-        try
-        {
+    public void newTabEvent() {
+        try {
             Tab new_tab = new Tab("new Tab");
             AnchorPane anch1 = FXMLLoader.load(getClass().getResource("newTabTemplate.fxml"));
             new_tab.setContent(anch1);
             tabPane.getTabs().addAll(new_tab);
             tabPane.getSelectionModel().selectLast();
+        } catch (IOException iex) {
+
         }
-        catch(IOException iex)
-        {
-            
+
+    }
+
+    // paleumm
+    // if urlStr is htt://example.com return value will be false
+    public boolean isValidURL(String urlStr) {
+        try {
+            URL url = new URL(urlStr);
+            return true;
+        } catch (MalformedURLException e) {
+            return false;
         }
-        
     }
 
 }
