@@ -31,7 +31,7 @@ public class TabController implements Initializable {
     @FXML
     Button backButton;
 
-    @FXML 
+    @FXML
     Button forwardButton;
 
     @FXML
@@ -138,35 +138,41 @@ public class TabController implements Initializable {
         } while (input != -1);
     }
 
-    private void checkBackForward(){
+    private void checkBackForward() {
         history = engine.getHistory();
         ObservableList<WebHistory.Entry> entries = history.getEntries();
-        
-        if (history.getCurrentIndex() == 0){
-            backButton.setOpacity(0.5);
-        }
-        else backButton.setOpacity(1);
 
-        if (history.getCurrentIndex() == entries.size() - 1){
+        if (history.getCurrentIndex() == 0) {
+            backButton.setOpacity(0.5);
+        } else
+            backButton.setOpacity(1);
+
+        if (history.getCurrentIndex() == entries.size() - 1) {
             forwardButton.setOpacity(0.5);
-        }
-        else forwardButton.setOpacity(1); 
+        } else
+            forwardButton.setOpacity(1);
     }
 
-    public void newTabEvent(){
-        try
-        {
+    public void newTabEvent() {
+        try {
             Tab new_tab = new Tab("new Tab");
             AnchorPane anch1 = FXMLLoader.load(getClass().getResource("newTabTemplate.fxml"));
             new_tab.setContent(anch1);
             tabPane.getTabs().addAll(new_tab);
             tabPane.getSelectionModel().selectLast();
+        } catch (IOException iex) {
+
         }
-        catch(IOException iex)
-        {
-            
+
+    }
+
+    public void homePage() {
+        textField.setText("www.google.com");
+        try {
+            loadPage();
+        } catch (IOException e) {
+            // TODO: handle exception
         }
-        
     }
 
 }
