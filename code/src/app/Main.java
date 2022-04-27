@@ -19,7 +19,7 @@ public class Main extends Application {
 
 			stage.setMaximized(true);
 
-			stage.setTitle("Ya-om Ya-dom Ya-mhong");
+			stage.setTitle("Test");
 			stage.setScene(scene);
 			stage.show();
 		} catch (Exception e) {
