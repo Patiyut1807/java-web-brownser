@@ -40,8 +40,6 @@ public class TabController implements Initializable {
     @FXML
     Tab tabWebview;
 
-    @FXML
-    Button homeButton;
 
     private WebEngine engine;
 
@@ -171,7 +169,6 @@ public class TabController implements Initializable {
         try {
             loadPage();
         } catch (IOException e) {
-            // TODO: handle exception
         }
     }
 
