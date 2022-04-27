@@ -140,4 +140,5 @@ public class TabController implements Initializable{
         }
         else forwardButton.setOpacity(1); 
     }
+
 }

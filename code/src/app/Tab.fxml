@@ -10,13 +10,15 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.web.WebView?>
 
+
 <AnchorPane minHeight="0.0" minWidth="0.0" onKeyPressed="#handle" prefHeight="180.0" prefWidth="1941.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.TabController">
+
    <children>
       <ToolBar onKeyPressed="#handle" prefHeight="34.0" prefWidth="1280.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <items>
-            <Button fx:id="backButton" mnemonicParsing="false" onAction="#back" prefHeight="30.0">
+            <Button fx:id="backButton" mnemonicParsing="false" onAction="#back" prefHeight="30.0" style="-fx-background-radius: 15;">
                <graphic>
-                  <ImageView fitHeight="16.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="16.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-radius: 15;">
                      <image>
                         <Image url="@asset/icons/angle-left.png" />
                      </image>
@@ -26,7 +28,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="forwardButton" mnemonicParsing="false" onAction="#forward" prefHeight="30.0">
+            <Button fx:id="forwardButton" mnemonicParsing="false" onAction="#forward" prefHeight="30.0" style="-fx-background-radius: 15;">
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -38,7 +40,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="loadButton1" mnemonicParsing="false" onAction="#refreshPage" prefHeight="30.0">
+            <Button fx:id="loadButton" mnemonicParsing="false" onAction="#refreshPage" prefHeight="30.0" style="-fx-background-radius: 50;">
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -50,7 +52,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <TextField fx:id="textField" onAction="#loadPage" prefHeight="26.0" prefWidth="550.0">
+            <TextField fx:id="textField" onAction="#loadPage" prefHeight="22.0" prefWidth="550.0" style="-fx-background-radius: 10;">
                <font>
                   <Font size="15.0" />
                </font>
@@ -60,6 +62,8 @@
             </TextField>
          </items>
       </ToolBar>
+
       <WebView fx:id="webView" layoutX="-19.0" layoutY="40.0" minHeight="-1.0" minWidth="-1.0" onKeyPressed="#handle" onMouseClicked="#onMouseClicked" onMouseMoved="#handle" prefHeight="-1.0" prefWidth="-1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0" />
+
    </children>
 </AnchorPane>
