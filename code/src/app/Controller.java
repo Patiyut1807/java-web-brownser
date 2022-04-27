@@ -6,9 +6,13 @@ import java.util.*;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebHistory;
 import javafx.scene.web.WebView;
@@ -29,6 +33,12 @@ public class Controller implements Initializable {
 
     @FXML 
     Button forwardButton;
+
+    @FXML
+    TabPane tabPane;
+
+    @FXML
+    Tab tabWebview;
 
     private WebEngine engine;
 
@@ -138,6 +148,22 @@ public class Controller implements Initializable {
             forwardButton.setOpacity(0.5);
         }
         else forwardButton.setOpacity(1); 
+    }
+
+    public void newTabEvent(){
+        try
+        {
+            Tab new_tab = new Tab("new Tab");
+            AnchorPane anch1 = FXMLLoader.load(getClass().getResource("newTabTemplate.fxml"));
+            new_tab.setContent(anch1);
+            tabPane.getTabs().addAll(new_tab);
+            tabPane.getSelectionModel().selectLast();
+        }
+        catch(IOException iex)
+        {
+            
+        }
+        
     }
 
 }

@@ -12,9 +12,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.web.WebView?>
 
-<TabPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.Controller">
+<TabPane fx:id="tabPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.Controller">
   <tabs>
-    <Tab text="Untitled Tab 1">
+    <Tab fx:id="tabWebview" text="Untitled Tab 1">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="1941.0">
                <children>
@@ -59,12 +59,12 @@
                            <cursor>
                               <Cursor fx:constant="TEXT" />
                            </cursor></TextField>
+                        <Button mnemonicParsing="false" onAction="#newTabEvent" text="+" />
                     </items>
                   </ToolBar>
                   <WebView fx:id="webView" layoutX="-19.0" layoutY="40.0" minHeight="-1.0" minWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0" />
                </children></AnchorPane>
       </content>
     </Tab>
-    <Tab text="Untitled Tab 2" />
   </tabs>
 </TabPane>
