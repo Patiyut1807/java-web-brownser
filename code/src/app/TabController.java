@@ -5,13 +5,14 @@ import java.net.*;
 import java.util.*;
 
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebHistory;
 import javafx.scene.web.WebView;
@@ -36,7 +37,7 @@ public class TabController implements Initializable{
     @FXML
     Tab tabWebview;
 
-    private WebEngine engine;
+    private static WebEngine engine;
 
     private WebHistory history;
 
@@ -45,8 +46,7 @@ public class TabController implements Initializable{
     private double webZoom;
 
     private URL url;
-    public static URLConnection urlConnection;
-    public static InputStream inputStream;
+    private URLConnection urlConnection;
 
     public void initialize(URL arg0, ResourceBundle arg1) {
 
@@ -57,9 +57,24 @@ public class TabController implements Initializable{
         textField.setText(homePage);
         try {
             loadPage();
+            
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void onMouseClicked(){
+        textField.setText(engine.getLocation());
+    }
+
+    public void handle(KeyEvent k) {
+        if (k.getCode().equals(KeyCode.ENTER)) {
+            textField.setText(engine.getLocation());
+        }
+    }
+
+    public static String getEngine(){
+        return engine.getLocation();
     }
 
     public void loadPage() throws IOException {
