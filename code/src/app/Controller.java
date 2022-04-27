@@ -1,8 +1,6 @@
 package app;
 
 import java.io.IOException;
-import java.net.*;
-import java.util.*;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
