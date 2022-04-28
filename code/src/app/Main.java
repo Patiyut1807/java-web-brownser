@@ -25,9 +25,8 @@ public class Main extends Application {
 		} catch (Exception e) {
 			e.getStackTrace();
 		}
-
+		//test
 	}
-	//testing
 	public static void main(String[] args) {
 		launch(args);
 	}
