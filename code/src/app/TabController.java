@@ -4,20 +4,20 @@ import java.io.*;
 import java.net.*;
 import java.util.*;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebHistory;
 import javafx.scene.web.WebView;
+import javafx.concurrent.Worker.State;
 
-public class TabController implements Initializable{
+public class TabController implements Initializable {
 
     @FXML
     private WebView webView;
@@ -31,7 +31,7 @@ public class TabController implements Initializable{
     @FXML
     Button backButton;
 
-    @FXML 
+    @FXML
     Button forwardButton;
 
     @FXML
@@ -57,27 +57,25 @@ public class TabController implements Initializable{
         textField.setText(homePage);
         try {
             loadPage();
-            
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void onMouseClicked(){
-        textField.setText(engine.getLocation());
-    }
-
-    public void handle(KeyEvent k) {
-        if (k.getCode().equals(KeyCode.ENTER)) {
-            textField.setText(engine.getLocation());
-        }
-    }
-
-    public static String getEngine(){
+    public static String getEngine() {
         return engine.getLocation();
     }
 
     public void loadPage() throws IOException {
+        engine.getLoadWorker().stateProperty().addListener(
+                new ChangeListener<State>() {
+                    public void changed(ObservableValue ov, State oldState, State newState) {
+                        if (newState == State.SUCCEEDED) {
+                            textField.setText(engine.getLocation());
+                        }
+                    }
+                });
         url = new URL("http://" + textField.getText());
         engine.load("http://" + textField.getText());
 
@@ -126,19 +124,19 @@ public class TabController implements Initializable{
         textField.setText(entries.get(history.getCurrentIndex()).getUrl());
     }
 
-    private void checkBackForward(){
+    private void checkBackForward() {
         history = engine.getHistory();
         ObservableList<WebHistory.Entry> entries = history.getEntries();
-        
-        if (history.getCurrentIndex() == 0){
-            backButton.setOpacity(0.5);
-        }
-        else backButton.setOpacity(1);
 
-        if (history.getCurrentIndex() == entries.size() - 1){
+        if (history.getCurrentIndex() == 0) {
+            backButton.setOpacity(0.5);
+        } else
+            backButton.setOpacity(1);
+
+        if (history.getCurrentIndex() == entries.size() - 1) {
             forwardButton.setOpacity(0.5);
-        }
-        else forwardButton.setOpacity(1); 
+        } else
+            forwardButton.setOpacity(1);
     }
 
 }
