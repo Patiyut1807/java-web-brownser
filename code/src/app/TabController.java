@@ -45,9 +45,6 @@ public class TabController implements Initializable {
 
     private double webZoom;
 
-    private URL url;
-    private URLConnection urlConnection;
-
     public void initialize(URL arg0, ResourceBundle arg1) {
 
         engine = webView.getEngine();
@@ -76,10 +73,7 @@ public class TabController implements Initializable {
                         }
                     }
                 });
-        url = new URL("http://" + textField.getText());
-        engine.load("http://" + textField.getText());
-
-        urlConnection = url.openConnection();
+        engine.load(textField.getText());
     }
 
     public void refreshPage() {
