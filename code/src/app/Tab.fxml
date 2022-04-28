@@ -43,7 +43,7 @@
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@asset/icons/rotate-right.png" />
+                        <Image url="@asset/icons/rotate_right.png" />
                      </image>
                   </ImageView>
                </graphic>
