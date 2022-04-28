@@ -71,7 +71,7 @@ public class TabController implements Initializable {
         engine.getLoadWorker().stateProperty().addListener(
                 new ChangeListener<State>() {
                     public void changed(ObservableValue ov, State oldState, State newState) {
-                        if (newState == State.SUCCEEDED) {
+                        if (newState == State.SCHEDULED) {
                             textField.setText(engine.getLocation());
                         }
                     }
