@@ -49,8 +49,6 @@ public class TabController implements Initializable {
 
     private double webZoom;
 
-    private TabPane tabPane;
-
     // TabController(TabPane tabPane){
     //     this.tabPane = tabPane;
     // }
@@ -79,7 +77,7 @@ public class TabController implements Initializable {
                         }
                     }
                 });
-        engine.load(textField.getText());
+        engine.load("https://"+textField.getText());
     }
 
     public void refreshPage() {
