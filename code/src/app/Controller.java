@@ -2,10 +2,13 @@ package app;
 
 import java.io.IOException;
 
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.BooleanBinding;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import javafx.scene.control.TabPane.TabClosingPolicy;
 import javafx.scene.layout.AnchorPane;
 
 public class Controller {
@@ -21,10 +24,19 @@ public class Controller {
 
     public void initialize() {
         createNewTab();
+        
     }
 
     public void addTabEvent() {
         tabPane.getSelectionModel().selectedItemProperty().addListener((ov, oldTab, newTab) -> {
+
+            if(tabPane.getTabs().size() == 3){
+                tabPane.setTabClosingPolicy(TabClosingPolicy.UNAVAILABLE);
+            }
+            else{
+                tabPane.setTabClosingPolicy(TabClosingPolicy.SELECTED_TAB);
+            }
+            
             if(newTab == sourceCode){
                 createSourceCode();
             }
