@@ -16,21 +16,18 @@ public class Controller {
     @FXML
     Tab addTab;
 
-    @FXML
-    Tab sourceCode;
+    TabController tabController;
 
     public void initialize() {
+        // tabController(this.tabPane);
         createNewTab();
     }
 
     public void addTabEvent() {
         tabPane.getSelectionModel().selectedItemProperty().addListener((ov, oldTab, newTab) -> {
-            if(newTab == sourceCode){
-                createSourceCode();
-            }
             if (newTab == addTab) {
-                 createNewTab();
-             }
+                createNewTab();
+            }
         });
     }
 
@@ -40,21 +37,7 @@ public class Controller {
         try {
             anch = FXMLLoader.load(getClass().getResource("Tab.fxml"));
             new_tab.setContent(anch);
-            tabPane.getTabs().add(tabPane.getTabs().size()-2, new_tab);
-            tabPane.getSelectionModel().select(new_tab);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void createSourceCode(){
-        Tab new_tab = new Tab("Source Code");
-        AnchorPane anch;
-        try {
-            anch = FXMLLoader.load(getClass().getResource("SourceCode.fxml"));
-            new_tab.setContent(anch);
-            tabPane.getTabs().add(tabPane.getTabs().size()-2, new_tab);
-
+            tabPane.getTabs().add(tabPane.getTabs().size() - 1, new_tab);
             tabPane.getSelectionModel().select(new_tab);
         } catch (IOException e) {
             e.printStackTrace();

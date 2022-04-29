@@ -59,6 +59,7 @@
                   <Cursor fx:constant="TEXT" />
                </cursor>
             </TextField>
+            <Button fx:id="sourceCodeButton" mnemonicParsing="false" text="Button" />
          </items>
       </ToolBar>
 

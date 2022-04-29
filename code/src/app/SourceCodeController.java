@@ -1,24 +1,21 @@
 package app;
 
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.control.TextArea;
 
 public class SourceCodeController {
-    
+
     @FXML
     TextArea textArea;
 
-    public void initialize() throws IOException{
+    public void initialize() throws IOException {
 
-        URL url = new URL(TabController.getEngine());
-        
+        URL url = new URL("");
+
         URLConnection urlConnection = url.openConnection();
         InputStream inputStream = urlConnection.getInputStream();
 
@@ -28,7 +25,7 @@ public class SourceCodeController {
         do {
             input = inputStream.read();
             if (input != -1) {
-               s +=(char) input;
+                s += (char) input;
             }
             if ((char) input == '>') {
                 s += "\n";
