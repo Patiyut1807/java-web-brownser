@@ -8,7 +8,9 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
@@ -49,9 +51,7 @@ public class TabController implements Initializable {
 
     private double webZoom;
 
-    // TabController(TabPane tabPane){
-    //     this.tabPane = tabPane;
-    // }
+
 
     public void initialize(URL arg0, ResourceBundle arg1) {
 
@@ -66,6 +66,14 @@ public class TabController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void souceCodeButtonEvent() throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Scene.fxml"));
+		Parent root = loader.load();
+		Controller controller = loader.getController();
+
+        controller.addSourceCodeTab();
     }
 
     public void loadPage() throws IOException {
@@ -84,9 +92,6 @@ public class TabController implements Initializable {
         engine.reload();
     }
 
-    // public void addSourceCodeTab() {
-
-    // }
 
     public void zoomIn() {
         webZoom += 0.25;

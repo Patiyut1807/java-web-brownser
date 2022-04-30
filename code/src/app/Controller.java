@@ -16,8 +16,6 @@ public class Controller {
     @FXML
     Tab addTab;
 
-    TabController tabController;
-
     public void initialize() {
         // tabController(this.tabPane);
         createNewTab();
@@ -42,5 +40,24 @@ public class Controller {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void addSourceCodeTab(){
+        System.out.println("H");
+
+        System.out.println(tabPane.getTabs().size());
+
+        Tab new_tab = new Tab("new Tab");
+        AnchorPane anch;
+        try {
+            anch = FXMLLoader.load(getClass().getResource("Tab.fxml"));
+            new_tab.setContent(anch);
+            tabPane.getTabs().add(tabPane.getTabs().size() - 1, new_tab);
+            tabPane.getSelectionModel().select(new_tab);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println(tabPane.getTabs().size());
     }
 }
