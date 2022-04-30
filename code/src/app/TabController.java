@@ -11,7 +11,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebHistory;
@@ -48,11 +47,6 @@ public class TabController implements Initializable {
     private String homePage;
 
     private double webZoom;
-
-    // TabController(TabPane tabPane){
-    //     this.tabPane = tabPane;
-    // }
-
     public void initialize(URL arg0, ResourceBundle arg1) {
 
         engine = webView.getEngine();
@@ -84,9 +78,6 @@ public class TabController implements Initializable {
         engine.reload();
     }
 
-    // public void addSourceCodeTab() {
-
-    // }
 
     public void zoomIn() {
         webZoom += 0.25;

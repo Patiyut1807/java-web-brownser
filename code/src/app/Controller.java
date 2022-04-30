@@ -43,4 +43,17 @@ public class Controller {
             e.printStackTrace();
         }
     }
+    //  public void createSourceCode(){
+    //     Tab new_tab = new Tab("Source Code");
+    //     AnchorPane anch;
+    //     try {
+    //         anch = FXMLLoader.load(getClass().getResource("SourceCode.fxml"));
+    //         new_tab.setContent(anch);
+    //         tabPane.getTabs().add(tabPane.getTabs().size()-2, new_tab);
+
+    //         tabPane.getSelectionModel().select(new_tab);
+    //     } catch (IOException e) {
+    //         e.printStackTrace();
+    //     }
+    // }
 }
