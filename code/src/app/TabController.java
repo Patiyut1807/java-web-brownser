@@ -4,6 +4,8 @@ import java.io.*;
 import java.net.*;
 import java.util.*;
 
+import javax.print.DocFlavor.STRING;
+
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
@@ -23,7 +25,7 @@ import javafx.concurrent.Worker.State;
 public class TabController implements Initializable {
 
     @FXML
-    private WebView webView;
+    WebView webView;
 
     @FXML
     TextField textField;
@@ -50,8 +52,6 @@ public class TabController implements Initializable {
     private String homePage;
 
     private double webZoom;
-
-
 
     public void initialize(URL arg0, ResourceBundle arg1) {
 
@@ -100,7 +100,6 @@ public class TabController implements Initializable {
         ObservableList<WebHistory.Entry> entries = history.getEntries();
 
         for (WebHistory.Entry entry : entries) {
-            // System.out.println(entry);
             System.out.println(entry.getUrl() + " " + entry.getLastVisitedDate());
         }
     }
