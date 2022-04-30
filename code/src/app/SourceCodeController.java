@@ -5,6 +5,8 @@ import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.TextArea;
 
 public class SourceCodeController {
@@ -13,6 +15,7 @@ public class SourceCodeController {
     TextArea textArea;
 
     public void initialize() throws IOException {
+
 
         URL url = new URL("");
 
