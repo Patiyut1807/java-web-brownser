@@ -62,7 +62,7 @@
             </TextField>
             <HBox prefHeight="0.0" prefWidth="206.0">
                <children>
-                  <Button fx:id="sourceCodeButton" mnemonicParsing="false" onAction="#souceCodeButtonEvent" text="Button" />
+                  <Button mnemonicParsing="false" text="Button" />
                   <Button mnemonicParsing="false" onAction="#zoomIn">
                      <graphic>
                         <ImageView fitHeight="13.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">

@@ -2,10 +2,16 @@ package app;
 
 import java.io.IOException;
 
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 
 public class Controller {
@@ -42,22 +48,56 @@ public class Controller {
         }
     }
 
-    public void addSourceCodeTab(){
-        System.out.println("H");
+    private BooleanProperty CtrlPressed = new SimpleBooleanProperty();
+    private BooleanProperty UPressed = new SimpleBooleanProperty();
 
-        System.out.println(tabPane.getTabs().size());
+    public void keyBoardEvent(){
 
-        Tab new_tab = new Tab("new Tab");
-        AnchorPane anch;
-        try {
-            anch = FXMLLoader.load(getClass().getResource("Tab.fxml"));
-            new_tab.setContent(anch);
-            tabPane.getTabs().add(tabPane.getTabs().size() - 1, new_tab);
-            tabPane.getSelectionModel().select(new_tab);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        tabPane.setOnKeyPressed(e->{
+            if (e.getCode() == KeyCode.CONTROL) {
+                System.out.println("Ctrl");
+                CtrlPressed.set(true);
+                checkEvent();
+            }
 
-        System.out.println(tabPane.getTabs().size());
+            if(e.getCode() == KeyCode.U){
+                System.out.println("U");
+                UPressed.set(true);
+                checkEvent();
+            }
+        });
+
+        tabPane.setOnKeyReleased(e->{
+            if (e.getCode() == KeyCode.CONTROL) {
+                CtrlPressed.set(false);
+            }
+
+            if(e.getCode() == KeyCode.U){
+                UPressed.set(false);
+            }
+        });
+
+        tabPane.addEventFilter(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
+            public void handle(KeyEvent k) {
+                checkEvent();
+            }
+        });
+    }
+
+    public void checkEvent(){
+        if(CtrlPressed.get() && UPressed.get()){
+
+            Tab new_tab = new Tab("Source Code");
+            AnchorPane anch;
+            try {
+                anch = FXMLLoader.load(getClass().getResource("SourceCode.fxml"));
+                new_tab.setContent(anch);
+                tabPane.getTabs().add(tabPane.getTabs().size() - 1, new_tab);
+                tabPane.getSelectionModel().select(new_tab);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+    
+            }
     }
 }

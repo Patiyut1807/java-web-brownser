@@ -68,14 +68,6 @@ public class TabController implements Initializable {
         }
     }
 
-    public void souceCodeButtonEvent() throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Scene.fxml"));
-		Parent root = loader.load();
-		Controller controller = loader.getController();
-
-        controller.addSourceCodeTab();
-    }
-
     public void loadPage() throws IOException {
         engine.getLoadWorker().stateProperty().addListener(
                 new ChangeListener<State>() {

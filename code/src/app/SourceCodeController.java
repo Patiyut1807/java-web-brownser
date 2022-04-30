@@ -14,7 +14,7 @@ public class SourceCodeController {
 
     public void initialize() throws IOException {
 
-        URL url = new URL("");
+        URL url = new URL("https://www.google.com");
 
         URLConnection urlConnection = url.openConnection();
         InputStream inputStream = urlConnection.getInputStream();
