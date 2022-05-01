@@ -74,16 +74,16 @@ public class TabController implements Initializable {
                     public void changed(ObservableValue ov, State oldState, State newState) {
                         if (newState == State.SCHEDULED) {
                             textField.setText(engine.getLocation());
+                            textField.setAccessibleText(engine.getLocation());
                         }
                     }
                 });
-        engine.load("https://"+textField.getText());
+        engine.load("https://" + textField.getText());
     }
 
     public void refreshPage() {
         engine.reload();
     }
-
 
     public void zoomIn() {
         webZoom += 0.25;

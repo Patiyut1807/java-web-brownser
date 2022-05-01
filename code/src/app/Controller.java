@@ -13,6 +13,7 @@ import javafx.scene.control.TabPane;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 
 public class Controller {
 
@@ -51,28 +52,28 @@ public class Controller {
     private BooleanProperty CtrlPressed = new SimpleBooleanProperty();
     private BooleanProperty UPressed = new SimpleBooleanProperty();
 
-    public void keyBoardEvent(){
+    public void keyBoardEvent() {
 
-        tabPane.setOnKeyPressed(e->{
+        tabPane.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.CONTROL) {
                 System.out.println("Ctrl");
                 CtrlPressed.set(true);
                 checkEvent();
             }
 
-            if(e.getCode() == KeyCode.U){
+            if (e.getCode() == KeyCode.U) {
                 System.out.println("U");
                 UPressed.set(true);
                 checkEvent();
             }
         });
 
-        tabPane.setOnKeyReleased(e->{
+        tabPane.setOnKeyReleased(e -> {
             if (e.getCode() == KeyCode.CONTROL) {
                 CtrlPressed.set(false);
             }
 
-            if(e.getCode() == KeyCode.U){
+            if (e.getCode() == KeyCode.U) {
                 UPressed.set(false);
             }
         });
@@ -84,11 +85,13 @@ public class Controller {
         });
     }
 
-    public void checkEvent(){
-        if(CtrlPressed.get() && UPressed.get()){
+    public void checkEvent() {
+        if (CtrlPressed.get() && UPressed.get()) {
 
+            Tab selectedTab = tabPane.getSelectionModel().getSelectedItem();
+            String url = selectedTab.getContent().lookup("#textField").getAccessibleText();
             Tab new_tab = new Tab("Source Code");
-            AnchorPane anch;
+            AnchorPane anch = new AnchorPane();
             try {
                 anch = FXMLLoader.load(getClass().getResource("SourceCode.fxml"));
                 new_tab.setContent(anch);
@@ -97,7 +100,7 @@ public class Controller {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-    
-            }
+
+        }
     }
 }
