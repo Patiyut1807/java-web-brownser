@@ -74,6 +74,7 @@ public class TabController implements Initializable {
                     public void changed(ObservableValue ov, State oldState, State newState) {
                         if (newState == State.SCHEDULED) {
                             textField.setText(engine.getLocation());
+                            textField.setAccessibleText(engine.getLocation());
                         }
                     }
                 });
