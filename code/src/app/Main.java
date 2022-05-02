@@ -11,24 +11,19 @@ public class Main extends Application {
 
 	@Override
 	public void start(Stage stage) throws IOException {
-		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("Scene.fxml"));
-			Parent root = loader.load();
-			Controller controller = loader.getController();
-			Scene scene = new Scene(root);
 
-			stage.setMaximized(true);
+		Tabpane tabpane = new Tabpane();
 
-			stage.setTitle("Test");
-			stage.setScene(scene);
-			stage.show();
-		} catch (Exception e) {
-			e.getStackTrace();
-		}
+        stage.setScene(tabpane.getScene());
+        stage.setTitle("Ya-om Ya-dom Ya-mhong");
+		
+        stage.setMaximized(true);
+		stage.show();
 
 	}
 
 	public static void main(String[] args) {
+
 		launch(args);
 	}
 }
