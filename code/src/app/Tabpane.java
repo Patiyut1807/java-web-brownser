@@ -1,4 +1,5 @@
 package app;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
@@ -18,7 +19,7 @@ public class Tabpane {
     private Scene scene;
     private TabPane tabPane;
 
-    public Tabpane() throws IOException{
+    public Tabpane(){
 
         tabPane = new TabPane();
 
@@ -29,6 +30,7 @@ public class Tabpane {
         createNewTabButton();
         createNewTab();
         tabPaneEvent();
+        
 
         scene = new Scene(tabPane);
     }
@@ -50,7 +52,8 @@ public class Tabpane {
     }
 
     private void createNewTab(){
-        Tab new_tab = new Tab("New Tab");
+
+        Tab new_tab = new Tab("Tab " + Integer.toString(tabPane.getTabs().size()));
         
         Webview webView = new Webview();
         new_tab.setContent(webView.getBorderPane());
@@ -69,7 +72,7 @@ public class Tabpane {
         TextArea textArea = new TextArea();
         borderPane.setCenter(textArea);
 
-        Tab new_tab = new Tab("Source Code");
+        Tab new_tab = new Tab("Source Code " + selectedTab.getText());
 
         URL url = new URL(selectedTab.getContent().lookup("TextField").getAccessibleText());
         URLConnection urlConnection = url.openConnection();
@@ -128,4 +131,3 @@ public class Tabpane {
     }
 
 }
-
