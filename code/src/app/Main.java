@@ -9,7 +9,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage stage) throws IOException {
 
-		Tabpane tabpane = new Tabpane();
+		CustomTabPane tabpane = new CustomTabPane();
 
         stage.setScene(tabpane.getScene());
         stage.setTitle("Ya-om Ya-dom Ya-mhong");

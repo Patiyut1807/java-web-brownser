@@ -13,12 +13,12 @@ import javafx.scene.control.TabPane.TabClosingPolicy;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 
-public class Tabpane {
+public class CustomTabPane {
 
     private Scene scene;
     private TabPane tabPane;
 
-    public Tabpane() {
+    public CustomTabPane() {
 
         tabPane = new TabPane();
 
@@ -54,7 +54,7 @@ public class Tabpane {
 
         Tab new_tab = new Tab("Tab " + Integer.toString(tabPane.getTabs().size()));
 
-        Webview webView = new Webview();
+        CustomTab webView = new CustomTab();
         new_tab.setContent(webView.getBorderPane());
 
         tabPane.getTabs().add(tabPane.getTabs().size() - 1, new_tab);
