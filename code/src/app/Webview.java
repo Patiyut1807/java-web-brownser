@@ -1,14 +1,13 @@
 package app;
 
 import java.io.IOException;
+import java.net.URL;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToolBar;
 import javafx.scene.layout.BorderPane;
@@ -51,10 +50,15 @@ public class Webview {
 
         textField.setPrefWidth(500);
         textField.setAlignment(Pos.CENTER);
+        textField.setOnAction(e->{try {
+            loadPage();
+        } catch (IOException e1) {
+            e1.printStackTrace();
+        }});
 
         webView = new WebView();
         engine = webView.getEngine();
-        homePage = "www.google.com";
+        homePage = "https://www.google.com";
         webZoom = 1;
 
         buttonEvent();
@@ -71,7 +75,17 @@ public class Webview {
         borderPane.setTop(vBox);
         borderPane.setCenter(webView);
     }
-
+    public static boolean isValid(String url)
+    {
+        try {
+            new URL(url).toURI();
+            return true;
+        }
+          
+        catch (Exception e) {
+            return false;
+        }
+    }
     public void loadPage() throws IOException {
         engine.getLoadWorker().stateProperty().addListener(
                 new ChangeListener<State>() {
@@ -83,10 +97,14 @@ public class Webview {
                         }
                     }
                 });
-        engine.load("https://"+textField.getText());
+        if(isValid(textField.getText())) engine.load(textField.getText());
+        else engine.load("https://www.google.com/search?q="+textField.getText());
     }
 
-    public void buttonEvent(){
+    public String getUrl(){
+        return engine.getLocation();
+    }
+        public void buttonEvent(){
         zoomInButton.setOnAction(e->{
             zoomIn();
         });
