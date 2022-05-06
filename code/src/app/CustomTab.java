@@ -39,6 +39,7 @@ public class CustomTab {
     private Button zoomInButton = new Button();
     private Button zoomOutButton = new Button();
     private Button homeButton = new Button();
+    private Button newTabButton = new Button();
 
     private ToolBar toolBar = new ToolBar(backButton, forwardButton, loadButton, textField, hBox);
 
@@ -61,8 +62,8 @@ public class CustomTab {
         toolBar.setPrefWidth(Control.USE_COMPUTED_SIZE);
 
         hBox.setAlignment(Pos.CENTER_RIGHT);
-        hBox.setTranslateX(660);
-        hBox.getChildren().addAll(zoomInButton, zoomOutButton, homeButton);
+        hBox.setTranslateX(630);
+        hBox.getChildren().addAll(zoomInButton, zoomOutButton, homeButton, newTabButton);
 
         textField.setPrefWidth(500);
         textField.setPadding(new Insets(5, 0, 5, 10));
@@ -88,6 +89,8 @@ public class CustomTab {
                 new Image(getClass().getResource("asset/icons/zoom-out.png").toString(), 14, 14, true, false)));
         homeButton.setGraphic(new ImageView(
                 new Image(getClass().getResource("asset/icons/home.png").toString(), 14, 14, true, false)));
+        newTabButton.setGraphic(new ImageView(
+                new Image(getClass().getResource("asset/icons/plus.png").toString(), 14, 14, true, false)));
 
         try {
             loadPage();

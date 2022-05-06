@@ -53,7 +53,7 @@ public class CustomTabPane {
 
     public static void createNewTab() {
 
-        Tab new_tab = new Tab();
+        Tab new_tab = new Tab("New Tab");
 
         CustomTab customTab = new CustomTab();
         new_tab.setContent(customTab.getBorderPane());
