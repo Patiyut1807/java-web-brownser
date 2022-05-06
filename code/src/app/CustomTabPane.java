@@ -12,6 +12,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TabPane.TabClosingPolicy;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.web.WebEngine;
 
 public class CustomTabPane {
 
@@ -48,15 +49,16 @@ public class CustomTabPane {
                 createNewTab();
             }
         });
+        
     }
 
     private void createNewTab() {
 
-        Tab new_tab = new Tab("Tab " + Integer.toString(tabPane.getTabs().size()));
+        Tab new_tab = new Tab();
 
-        CustomTab webView = new CustomTab();
-        new_tab.setContent(webView.getBorderPane());
-
+        CustomTab customTab = new CustomTab();
+        new_tab.setContent(customTab.getBorderPane());
+        customTab.setCurrentTab(new_tab);
         tabPane.getTabs().add(tabPane.getTabs().size() - 1, new_tab);
         tabPane.getSelectionModel().select(new_tab);
     }

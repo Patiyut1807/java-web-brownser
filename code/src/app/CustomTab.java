@@ -8,6 +8,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 
 import javafx.scene.control.Button;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToolBar;
 import javafx.scene.image.Image;
@@ -43,6 +44,7 @@ public class CustomTab {
     private String homePage;
     private double webZoom;
     private WebHistory history;
+    private Tab currentTab;
 
     public CustomTab() {
 
@@ -108,6 +110,9 @@ public class CustomTab {
     }
 
     public void loadPage() throws IOException {
+        if (isValid(textField.getText()))
+            engine.load(textField.getText());
+        else engine.load("https://www.google.com/search?q=" + textField.getText());
         engine.getLoadWorker().stateProperty().addListener(
                 new ChangeListener<State>() {
                     public void changed(ObservableValue ov, State oldState, State newState) {
@@ -116,12 +121,11 @@ public class CustomTab {
                             textField.setText(engine.getLocation());
                             textField.setAccessibleText(engine.getLocation());
                         }
+                        if (newState == State.SUCCEEDED) {
+                            currentTab.setText(engine.getTitle());
+                        }
                     }
                 });
-        if (isValid(textField.getText()))
-            engine.load(textField.getText());
-        else
-            engine.load("https://www.google.com/search?q=" + textField.getText());
     }
 
     public String getUrl() {
@@ -191,15 +195,15 @@ public class CustomTab {
     private void checkBackForward() {
         history = engine.getHistory();
         ObservableList<WebHistory.Entry> entries = history.getEntries();
-        if (history.getCurrentIndex() == 0) {
+        if (history.getCurrentIndex() == 0 ) {
             backButton.setDisable(true);
             backButton.setOpacity(0.5);
-        } else {
+        } else if(entries.size() != 0) {
             backButton.setDisable(false);
             backButton.setOpacity(1);
         }
 
-        if (history.getCurrentIndex() == entries.size() - 1) {
+        if (history.getCurrentIndex() == entries.size() -1 || entries.size() == 0 ) {
             forwardButton.setDisable(true);
             forwardButton.setOpacity(0.5);
         } else {
@@ -215,4 +219,14 @@ public class CustomTab {
     public BorderPane getBorderPane() {
         return this.borderPane;
     }
+    public Tab getCurrentTab(){
+        return this.currentTab;
+    }
+    public void setCurrentTab(Tab tab){
+        this.currentTab = tab;
+    }
+    public WebEngine getEngine(){
+        return this.engine;
+    }
 }
+
