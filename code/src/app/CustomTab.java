@@ -62,8 +62,8 @@ public class CustomTab {
         toolBar.setPrefWidth(Control.USE_COMPUTED_SIZE);
 
         hBox.setAlignment(Pos.CENTER_RIGHT);
-        //hBox.setTranslateX(630);
-        hBox.setTranslateX(400);
+        hBox.setTranslateX(630);
+        // hBox.setTranslateX(400);
 
         hBox.getChildren().addAll(zoomInButton, zoomOutButton, homeButton, newTabButton);
 
