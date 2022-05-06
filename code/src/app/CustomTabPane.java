@@ -12,12 +12,11 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TabPane.TabClosingPolicy;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.web.WebEngine;
 
 public class CustomTabPane {
 
     private Scene scene;
-    private TabPane tabPane;
+    private static TabPane tabPane;
 
     public CustomTabPane() {
 
@@ -52,7 +51,7 @@ public class CustomTabPane {
         
     }
 
-    private void createNewTab() {
+    public static void createNewTab() {
 
         Tab new_tab = new Tab();
 

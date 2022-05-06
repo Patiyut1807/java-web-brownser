@@ -8,12 +8,14 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 
 import javafx.scene.control.Button;
+import javafx.scene.control.Control;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToolBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebHistory;
@@ -27,6 +29,7 @@ public class CustomTab {
     private BorderPane borderPane = new BorderPane();
     private WebView webView;
 
+    public HBox hBox = new HBox();
     public TextField textField = new TextField("");
 
     private Button loadButton = new Button();
@@ -36,8 +39,8 @@ public class CustomTab {
     private Button zoomOutButton = new Button();
     private Button homeButton = new Button();
 
-    private ToolBar toolBar = new ToolBar(backButton, forwardButton, loadButton, textField, zoomInButton,
-            zoomOutButton, homeButton);
+    private ToolBar toolBar = new ToolBar(backButton, forwardButton, loadButton, textField, hBox);
+
     private VBox vBox = new VBox(toolBar);
     private WebEngine engine;
 
@@ -48,11 +51,16 @@ public class CustomTab {
 
     public CustomTab() {
 
-        borderPane.setPrefHeight(1080);
-        borderPane.setPrefHeight(1920);
+        // borderPane.setPrefHeight(1080);
+        // borderPane.setPrefHeight(1920);
+        borderPane.setPrefHeight(Control.USE_COMPUTED_SIZE);
+        borderPane.setPrefHeight(Control.USE_COMPUTED_SIZE);
 
-        toolBar.setPrefHeight(34);
-        toolBar.setMaxWidth(1920);
+        toolBar.setPrefHeight(Control.USE_COMPUTED_SIZE);
+        toolBar.setPrefWidth(Control.USE_COMPUTED_SIZE);
+        
+        hBox.setAlignment(Pos.CENTER_RIGHT);
+        hBox.getChildren().addAll(zoomInButton, zoomOutButton, homeButton);
 
         loadButton.setGraphic(new ImageView(
                 new Image(getClass().getResource("asset/icons/rotate-right.png").toString(), 14, 14, true, false)));
@@ -112,7 +120,8 @@ public class CustomTab {
     public void loadPage() throws IOException {
         if (isValid(textField.getText()))
             engine.load(textField.getText());
-        else engine.load("https://www.google.com/search?q=" + textField.getText());
+        else
+            engine.load("https://www.google.com/search?q=" + textField.getText());
         engine.getLoadWorker().stateProperty().addListener(
                 new ChangeListener<State>() {
                     public void changed(ObservableValue ov, State oldState, State newState) {
@@ -195,15 +204,15 @@ public class CustomTab {
     private void checkBackForward() {
         history = engine.getHistory();
         ObservableList<WebHistory.Entry> entries = history.getEntries();
-        if (history.getCurrentIndex() == 0 ) {
+        if (history.getCurrentIndex() == 0) {
             backButton.setDisable(true);
             backButton.setOpacity(0.5);
-        } else if(entries.size() != 0) {
+        } else if (entries.size() != 0) {
             backButton.setDisable(false);
             backButton.setOpacity(1);
         }
 
-        if (history.getCurrentIndex() == entries.size() -1 || entries.size() == 0 ) {
+        if (history.getCurrentIndex() == entries.size() - 1 || entries.size() == 0) {
             forwardButton.setDisable(true);
             forwardButton.setOpacity(0.5);
         } else {
@@ -219,14 +228,16 @@ public class CustomTab {
     public BorderPane getBorderPane() {
         return this.borderPane;
     }
-    public Tab getCurrentTab(){
+
+    public Tab getCurrentTab() {
         return this.currentTab;
     }
-    public void setCurrentTab(Tab tab){
+
+    public void setCurrentTab(Tab tab) {
         this.currentTab = tab;
     }
-    public WebEngine getEngine(){
+
+    public WebEngine getEngine() {
         return this.engine;
     }
 }
-
