@@ -27,9 +27,10 @@ import javafx.geometry.Pos;
 public class CustomTab {
 
     private BorderPane borderPane = new BorderPane();
-    private WebView webView;
+    private HBox hBox = new HBox();
 
-    public HBox hBox = new HBox();
+    private WebView webView;
+    private WebEngine engine;
     public TextField textField = new TextField("");
 
     private Button loadButton = new Button();
@@ -41,9 +42,6 @@ public class CustomTab {
 
     private ToolBar toolBar = new ToolBar(backButton, forwardButton, loadButton, textField, hBox);
 
-    private VBox vBox = new VBox(toolBar);
-    private WebEngine engine;
-
     private String homePage;
     private double webZoom;
     private WebHistory history;
@@ -51,16 +49,32 @@ public class CustomTab {
 
     public CustomTab() {
 
-        // borderPane.setPrefHeight(1080);
-        // borderPane.setPrefHeight(1920);
+        webView = new WebView();
+        engine = webView.getEngine();
+        homePage = "https://www.google.com";
+        webZoom = 1;
+
         borderPane.setPrefHeight(Control.USE_COMPUTED_SIZE);
         borderPane.setPrefHeight(Control.USE_COMPUTED_SIZE);
 
         toolBar.setPrefHeight(Control.USE_COMPUTED_SIZE);
         toolBar.setPrefWidth(Control.USE_COMPUTED_SIZE);
-        
+
         hBox.setAlignment(Pos.CENTER_RIGHT);
+        hBox.setTranslateX(660);
         hBox.getChildren().addAll(zoomInButton, zoomOutButton, homeButton);
+
+        textField.setPrefWidth(500);
+        textField.setPadding(new Insets(5, 0, 5, 10));
+        textField.setAlignment(Pos.CENTER_LEFT);
+        textField.setOnAction(e -> {
+            try {
+                loadPage();
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+        });
+        textField.setText(homePage);
 
         loadButton.setGraphic(new ImageView(
                 new Image(getClass().getResource("asset/icons/rotate-right.png").toString(), 14, 14, true, false)));
@@ -75,26 +89,6 @@ public class CustomTab {
         homeButton.setGraphic(new ImageView(
                 new Image(getClass().getResource("asset/icons/home.png").toString(), 14, 14, true, false)));
 
-        textField.setPrefWidth(500);
-        textField.setPadding(new Insets(5, 0, 5, 10));
-        textField.setAlignment(Pos.CENTER_LEFT);
-        textField.setOnAction(e -> {
-            try {
-                loadPage();
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
-        });
-
-        webView = new WebView();
-        engine = webView.getEngine();
-        homePage = "https://www.google.com";
-        webZoom = 1;
-
-        buttonEvent();
-
-        textField.setText(homePage);
-
         try {
             loadPage();
 
@@ -102,8 +96,9 @@ public class CustomTab {
             e.printStackTrace();
         }
 
-        borderPane.setTop(vBox);
+        borderPane.setTop(toolBar);
         borderPane.setCenter(webView);
+        buttonEvent();
     }
 
     public static boolean isValid(String url) {
@@ -135,10 +130,6 @@ public class CustomTab {
                         }
                     }
                 });
-    }
-
-    public String getUrl() {
-        return engine.getLocation();
     }
 
     public void buttonEvent() {
@@ -231,6 +222,10 @@ public class CustomTab {
 
     public Tab getCurrentTab() {
         return this.currentTab;
+    }
+
+    public String getUrl() {
+        return engine.getLocation();
     }
 
     public void setCurrentTab(Tab tab) {

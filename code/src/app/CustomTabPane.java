@@ -120,11 +120,11 @@ public class CustomTabPane {
     }
 
     public double getHeight() {
-        return this.tabPane.getHeight();
+        return tabPane.getHeight();
     }
 
     public double getWidth() {
-        return this.tabPane.getWidth();
+        return tabPane.getWidth();
     }
 
     public Scene getScene() {
