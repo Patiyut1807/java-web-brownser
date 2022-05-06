@@ -62,7 +62,9 @@ public class CustomTab {
         toolBar.setPrefWidth(Control.USE_COMPUTED_SIZE);
 
         hBox.setAlignment(Pos.CENTER_RIGHT);
-        hBox.setTranslateX(630);
+        //hBox.setTranslateX(630);
+        hBox.setTranslateX(400);
+
         hBox.getChildren().addAll(zoomInButton, zoomOutButton, homeButton, newTabButton);
 
         textField.setPrefWidth(500);
@@ -160,6 +162,11 @@ public class CustomTab {
             } catch (IOException e1) {
                 e1.printStackTrace();
             }
+        });
+        newTabButton.setOnAction(e -> {
+            CustomTabPane.createNewTab();
+            
+            
         });
     }
 

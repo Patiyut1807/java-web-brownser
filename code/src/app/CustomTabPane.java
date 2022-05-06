@@ -13,6 +13,7 @@ import javafx.scene.control.TabPane.TabClosingPolicy;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 
+
 public class CustomTabPane {
 
     private Scene scene;

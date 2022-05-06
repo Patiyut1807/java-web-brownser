@@ -9,3 +9,6 @@ code/lib/javafx.swing.jar
 code/lib/javafx.properties
 code/lib/javafx.web.jar
 code/.DS_Store
+code/.vscode/settings.json
+code/.vscode/settings.json
+code/bin/app/*.class
