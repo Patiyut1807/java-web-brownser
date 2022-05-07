@@ -4,9 +4,6 @@ import java.io.IOException;
 import javafx.application.Application;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import javafx.scene.Group;
-import javafx.scene.Scene;
-import javafx.scene.layout.StackPane;
 
 public class Main extends Application {
 

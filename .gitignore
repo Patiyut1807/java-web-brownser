@@ -12,3 +12,13 @@ code/.DS_Store
 code/.vscode/settings.json
 code/.vscode/settings.json
 code/bin/app/*.class
+code/lib/javafx/javafx-swt.jar
+code/lib/javafx/javafx.base.jar
+code/lib/javafx/javafx.controls.jar
+code/lib/javafx/javafx.fxml.jar
+code/lib/javafx/javafx.graphics.jar
+code/lib/javafx/javafx.media.jar
+code/lib/javafx/javafx-swt.jar
+code/lib/javafx/javafx.swing.jar
+code/lib/javafx/javafx.properties
+code/lib/javafx/javafx.web.jar
